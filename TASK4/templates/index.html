@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3qgb1w2SDvxZvhKFzis5trxY8BU8T-l40pw&s');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 50%;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            background: linear-gradient(45deg, #0057ff, #003399);
+            padding: 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        h1:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 255, 0.9);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+            outline: none;
+        }
+
+        input:hover, select:hover {
+            border-color: #0057ff;
+            box-shadow: 0 0 10px rgba(0, 85, 255, 0.8);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #0057ff, #003399);
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #003399, #0057ff);
+            box-shadow: 0 0 15px rgba(0, 0, 255, 0.9);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Heart Disease Predictor</h1>
+
+    <div class="container">
+        <h2 style="text-align: center;">Heart Disease Prediction</h2>
+        <p style="text-align: center;">Enter your medical details below to predict the risk of heart disease</p>
+
+        <form action="/predict" method="post">
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" placeholder="Enter your age" required>
+
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="chest_pain">Chest Pain Type (0-3)</label>
+            <select name="chest_pain" id="chest_pain" required>
+                <option value="0">0 - Typical Angina</option>
+                <option value="1">1 - Atypical Angina</option>
+                <option value="2">2 - Non-Anginal Pain</option>
+                <option value="3">3 - Asymptomatic</option>
+            </select>
+
+            <label for="bp">Resting Blood Pressure (mm Hg)</label>
+            <input type="number" name="bp" id="bp" placeholder="Enter blood pressure" required>
+
+            <label for="cholesterol">Cholesterol (mg/dL)</label>
+            <input type="number" name="cholesterol" id="cholesterol" placeholder="Enter cholesterol level" required>
+
+            <label for="sugar">Fasting Blood Sugar > 120 mg/dL</label>
+            <select name="sugar" id="sugar" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="ecg">Resting ECG (0, 1, 2)</label>
+            <select name="ecg" id="ecg" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+
+            <label for="max_heart_rate">Max Heart Rate Achieved</label>
+            <input type="number" name="max_heart_rate" id="max_heart_rate" placeholder="Enter max heart rate" required>
+
+            <label for="angina">Exercise Induced Angina</label>
+            <select name="angina" id="angina" required>
+                <option value="0">0 - No</option>
+                <option value="1">1 - Yes</option>
+            </select>
+
+            <label for="oldpeak">Oldpeak (ST Depression)</label>
+            <input type="number" name="oldpeak" id="oldpeak" placeholder="Enter Oldpeak value" step="0.1" required>
+
+            <label for="st_slope">ST Slope (0, 1, 2)</label>
+            <select name="st_slope" id="st_slope" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+
+            <label for="vessels">Number of Major Vessels </label>
+            <select name="vessels" id="vessels" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <label for="thalassemia">Thalassemia</label>
+            <select name="thalassemia" id="thalassemia" required>
+                <option value="0">0 - Normal</option>
+                <option value="1">1 - Fixed Defect</option>
+                <option value="2">2 - Reversible Defect</option>
+                <option value="3">3 - versible Defect</option>
+            </select>
+
+            <button class="btn" type="submit">Predict</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        © 2024 Heart Disease Predictor. All rights reserved.
+    </div>
+    <script>
+        function submitForm() {
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = "/predict";
+    
+            const fields = [
+                "age", "gender", "chest_pain", "bp", "cholesterol",
+                "sugar", "ecg", "max_heart_rate", "angina", "oldpeak",
+                "st_slope", "vessels", "thalassemia"
+            ];
+    
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                const hiddenField = document.createElement("input");
+                hiddenField.type = "hidden";
+                hiddenField.name = field;
+                hiddenField.value = input.value;
+                form.appendChild(hiddenField);
+            });
+    
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body>
+</html>
